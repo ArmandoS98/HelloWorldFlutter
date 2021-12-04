@@ -1,5 +1,7 @@
 import 'package:clase11182021/example.dart';
 import 'package:flutter/material.dart';
+import 'header_appbar.dart';
+import 'review_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +52,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String title = "Guatebella";
-  String desc = "Guatemala, un país de América Central al sur de México, tiene volcanes, bosques tropicales y antiguos sitios mayas. La capital, Ciudad de Guatemala, cuenta con el imponente Palacio Nacional de la Cultura y el Museo Nacional de Arqueología y Etnología. Antigua Guatemala, al oeste de la capital, contiene edificios coloniales españoles preservados. El lago de Atitlán, formado en un enorme cráter volcánico, está rodeado de campos de café y aldeas.";
+  String desc =
+      "Guatemala, un país de América Central al sur de México, tiene volcanes, bosques tropicales y antiguos sitios mayas. La capital, Ciudad de Guatemala, cuenta con el imponente Palacio Nacional de la Cultura y el Museo Nacional de Arqueología y Etnología. Antigua Guatemala, al oeste de la capital, contiene edificios coloniales españoles preservados. El lago de Atitlán, formado en un enorme cráter volcánico, está rodeado de campos de café y aldeas.";
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -60,11 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
+        body: Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[Example(title, 3, desc), ReviewList()],
         ),
-        body: Example(title, 3, desc));
+        HeaderAppbar()
+      ],
+    ));
+    // Example(title, 3, desc)
   }
 }
